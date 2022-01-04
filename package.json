@@ -1,0 +1,14 @@
+{
+  "name": "rtl-mock-component",
+  "version": "0.1.0",
+  "description": "Helper to facilitate mocking components with @testing-library/react",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Paul Rowe <prowe@sourceallies.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.5.4"
+  }
+}
