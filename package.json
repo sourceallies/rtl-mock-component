@@ -9,6 +9,18 @@
   "author": "Paul Rowe <prowe@sourceallies.com>",
   "license": "ISC",
   "devDependencies": {
+    "@babel/preset-env": "^7.16.7",
+    "@babel/preset-react": "^7.16.7",
+    "@testing-library/react": "^12.1.2",
+    "@types/jest": "^27.4.0",
+    "@types/react": "^17.0.38",
+    "babel-jest": "^27.4.5",
+    "jest": "^27.4.5",
+    "react": "^17.0.2",
+    "react-test-renderer": "^17.0.2",
     "typescript": "^4.5.4"
+  },
+  "jest": {
+    "testEnvironment": "jest-environment-jsdom"
   }
 }

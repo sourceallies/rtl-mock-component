@@ -10,6 +10,14 @@ While I generally agree with Kent C. Dodds that we shouldn't mock every componen
 
 This library compliments `@testing-library/react` to make it easy to setup and mock components and assert that those components are holding the correct props.
 
+## Setup
+
+1. We assume that your project is already using [Jest] and [@testing-library/react]
+2. Install this library
+    ```bash
+    npm install --save-dev @sourceallies/rtl-mock-component
+    ```
+
 ## Usage
 
 1. First, import this library and the component you are mocking in your test:
