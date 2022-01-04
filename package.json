@@ -4,7 +4,8 @@
   "description": "Helper to facilitate mocking components with @testing-library/react",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "compile": "tsc"
   },
   "author": "Paul Rowe <prowe@sourceallies.com>",
   "license": "ISC",
