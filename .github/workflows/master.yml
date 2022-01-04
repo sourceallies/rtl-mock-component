@@ -1,12 +1,12 @@
-name: Pull Requet Verify
+name: Mainline Build
 on:
-  pull_request:
+  push:
     branches:
       - master
 
 jobs:
   verify:
-    name: Verify
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
