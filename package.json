@@ -1,11 +1,14 @@
 {
-  "name": "rtl-mock-component",
+  "name": "@prowe/rtl-mock-component",
   "version": "0.1.0",
   "description": "Helper to facilitate mocking components with @testing-library/react",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "jest",
     "compile": "tsc"
+  },
+  "engines": {
+    "node": ">=12"
   },
   "author": "Paul Rowe <prowe@sourceallies.com>",
   "license": "ISC",
