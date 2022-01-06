@@ -9,6 +9,10 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
     "test": "jest",
     "compile": "tsc"
