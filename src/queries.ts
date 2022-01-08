@@ -9,26 +9,44 @@ function buildMatcherFunctionForComponent<PropType>(mockComponent: FC<PropType>)
     };
 }
 
+/**
+ * Attempt to find the mocked element. Throws if not exactly one is found.
+ */
 export function getByMockComponent<PropType>(mockComponent: FC<PropType>): MockedElement<PropType> {
     return screen.getByTestId(buildMatcherFunctionForComponent(mockComponent));
 }
 
+/**
+ * Attempt to find all mocked elements. Throws if none found.
+ */
 export function getAllByMockComponent<PropType>(mockComponent: FC<PropType>): MockedElement<PropType>[] {
-    throw new Error('Not implemented');
+    return screen.getAllByTestId(buildMatcherFunctionForComponent(mockComponent));
 }
 
+/**
+ * Attempt to find the mocked element. Returns null if not found. Throws if multiple found.
+ */
 export function queryByMockComponent<PropType>(mockComponent: FC<PropType>): MockedElement<PropType> | null {
-    throw new Error('Not implemented');
+    return screen.queryByTestId(buildMatcherFunctionForComponent(mockComponent));
 }
 
+/**
+ * Attempt to find all mocked element. Returns empty array if not found.
+ */
 export function queryAllByMockComponent<PropType>(mockComponent: FC<PropType>): MockedElement<PropType>[] {
-    throw new Error('Not implemented');
+    return screen.queryAllByTestId(buildMatcherFunctionForComponent(mockComponent));
 }
 
+/**
+ * Attempt to find the mocked element. Reject if not eventually found or multiple are found.
+ */
 export function findByMockComponent<PropType>(mockComponent: FC<PropType>): Promise<MockedElement<PropType>> {
-    throw new Error('Not implemented');
+    return screen.findByTestId(buildMatcherFunctionForComponent(mockComponent));
 }
 
+/**
+ * Attempt to find all the mocked element. Rejects if non are eventually found.
+ */
 export function findAllByMockComponent<PropType>(mockComponent: FC<PropType>): Promise<MockedElement<PropType>[]> {
-    throw new Error('Not implemented');
+    return screen.findAllByTestId(buildMatcherFunctionForComponent(mockComponent));
 }
