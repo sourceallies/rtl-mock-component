@@ -10,7 +10,15 @@ export type MockedElement<PropType = {}> = HTMLElement & {
 
 export const mockElementTestId = 'rtl-mock-element';
 
+function ensureIsMock<PropType>(mockedComponent: FC<PropType>) {
+    if (!jest.isMockFunction(mockedComponent)) {
+        throw new Error(`${mockedComponent.name} cannot be setup because it is not a Jest mock. Call "jest.mock('path/to/component')" first`);
+    }
+}
+
 export function setupMockComponent<PropType>(mockedComponent: FC<PropType>) {
+    ensureIsMock(mockedComponent);
+
     const comp = mockedComponent as MockedComponent<PropType>;
     comp.mockImplementation((props: PropType) => {
         const mockedElmentRef = useRef<MockedElement<PropType> | null>(null);

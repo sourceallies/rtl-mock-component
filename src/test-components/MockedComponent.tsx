@@ -1,7 +1,7 @@
 import { FC } from "react";
 
 export interface MockedComponentProps {
-    value: string;
+    value?: string;
 }
 
 const MockedComponent: FC<MockedComponentProps> = () => {
