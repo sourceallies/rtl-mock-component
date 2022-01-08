@@ -1,2 +1,3 @@
-export {setupMockComponent} from './setupMockComponent';
-export * from './queries';
+export function setupMockComponent() {
+    console.log('Setting up mock component');
+}
