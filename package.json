@@ -1,12 +1,12 @@
 {
-  "name": "@prowe/rtl-mock-component",
+  "name": "@sourceallies/rtl-mock-component",
   "version": "0.0.0-development",
   "description": "Helper to facilitate mocking components with @testing-library/react",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git://github.com/prowe/rtl-mock-component.git"
+    "url": "git://github.com/sourceallies/rtl-mock-component.git"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
@@ -57,7 +57,7 @@
     "branches": ["master"]
   },
   "bugs": {
-    "url": "https://github.com/prowe/rtl-mock-component/issues"
+    "url": "https://github.com/sourceallies/rtl-mock-component/issues"
   },
-  "homepage": "https://github.com/prowe/rtl-mock-component#readme"
+  "homepage": "https://github.com/sourceallies/rtl-mock-component#readme"
 }
