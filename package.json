@@ -55,6 +55,10 @@
   "jest": {
     "testEnvironment": "jest-environment-jsdom",
     "preset": "ts-jest",
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/dist"
+    ],
     "setupFilesAfterEnv": [
       "<rootDir>/src/jest-setup.ts"
     ]
