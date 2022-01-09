@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "repository": {
+    "type": "git",
     "url": "git://github.com/prowe/rtl-mock-component.git"
   },
   "publishConfig": {
@@ -22,7 +23,16 @@
     "node": ">=12"
   },
   "author": "Paul Rowe <prowe@sourceallies.com>",
-  "license": "ISC",
+  "keywords": [
+    "dom",
+    "jsdom",
+    "react",
+    "testing-library",
+    "testing",
+    "ui",
+    "unit"
+  ],
+  "license": "MIT",
   "devDependencies": {
     "@babel/preset-env": "^7.16.7",
     "@babel/preset-react": "^7.16.7",
@@ -35,10 +45,19 @@
     "react-test-renderer": "^17.0.2",
     "typescript": "^4.5.4"
   },
+  "peerDependencies": {
+    "react": "*",
+    "react-dom": "*",
+    "@testing-library/react": "*"
+  },
   "jest": {
     "testEnvironment": "jest-environment-jsdom"
   },
   "release": {
     "branches": ["master"]
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/prowe/rtl-mock-component/issues"
+  },
+  "homepage": "https://github.com/prowe/rtl-mock-component#readme"
 }
