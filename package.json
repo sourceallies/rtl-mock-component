@@ -9,7 +9,7 @@
     "url": "git://github.com/sourceallies/rtl-mock-component.git"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "registry": "https://registry.npmjs.org"
   },
   "files": [
     "dist",
