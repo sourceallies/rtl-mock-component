@@ -46,3 +46,9 @@ This library compliments `@testing-library/react` to make it easy to setup and m
     ```
 
     *Note:* this way of testing ensures that the component is **currently** rendered with the provided value. Jest's `toHaveBeenCalledWith` would only test that was ever rendered with the expected value.
+
+### Customization
+
+`setupMockComponent` takes an options argument that can change the behavior of the mock.
+
+To change the element used from a div, pass the element name. This is useful when the mock is used in a place where only certain elements are valid (ex. a child of a `tbody` must be a `tr`)
