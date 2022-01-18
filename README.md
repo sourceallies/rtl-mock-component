@@ -22,7 +22,7 @@ This library compliments `@testing-library/react` to make it easy to setup and m
 
 1. First, import this library and the component you are mocking in your test:
     ```Typescript
-    import {setupMockComponent, getMockComponent} from '@sourceallies/rtl-mock-component';
+    import {setupMockComponent, getByMockComponent} from '@sourceallies/rtl-mock-component';
     import MyChildComponent from './MyChildComponent';
     ```
 2. Next, mock the module just like any other mock:
@@ -38,11 +38,11 @@ This library compliments `@testing-library/react` to make it easy to setup and m
 4. Now, when you call `render` with any ancestor component, the implementation will not be called and a stub element will be rendered in its place.
 5. If you want to assert the component is in the dom you can do it as so:
     ```Typescript
-    expect(getMockComponent(MyChildComponent)).toBeInTheDocument();
+    expect(getByMockComponent(MyChildComponent)).toBeInTheDocument();
     ```
 6. `getMockComponent` and the other query functions return a `MockedComponentElement<T>` that extends from `HTMLElement` and adds a `props` property that can be asserted on. For example, to make sure that the compnent is currently rendered with the open prop set to true:
     ```Typescript
-    expect(getMockComponent(MyChildComponent).props.open).toBe(true);
+    expect(getByMockComponent(MyChildComponent).props.open).toBe(true);
     ```
 
     *Note:* this way of testing ensures that the component is **currently** rendered with the provided value. Jest's `toHaveBeenCalledWith` would only test that was ever rendered with the expected value.
