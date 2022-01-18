@@ -45,7 +45,7 @@ export function setupMockComponent<PropType>(mockedComponent: FC<PropType>, opti
         return React.createElement(type, {
             ref,
             'data-testid': mockElementTestId,
-        });
+        }, props.children);
     };
 
     const comp = mockedComponent as MockedComponent<PropType>;
