@@ -30,6 +30,16 @@ it('should have the prop held', () => {
     expect(getByMockComponent(MockedComponent).props.value).toEqual('val');
 });
 
+it('should render any passed children', () => {
+    render(
+        <div>
+            <MockedComponent><button>Save</button></MockedComponent>
+        </div>
+    );
+
+    expect(screen.getByRole('button', {name: 'Save'})).toBeInTheDocument();
+});
+
 it('should hold the last value on a re-render', () => {
     const {rerender} = render(<TestedComponent value='val' />);
     rerender(<TestedComponent value='new-val' />);
