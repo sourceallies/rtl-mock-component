@@ -1,7 +1,7 @@
-import React, { ReactHTML, RefCallback, useEffect, useRef } from "react";
+import React, { Component, ReactHTML, RefCallback, useEffect, useRef } from "react";
 import { FC } from "react";
 
-export type MockedComponent<PropType> = jest.MockedFunction<FC<PropType>>;
+export type MockedComponent<PropType> = jest.MockedFunction<FC<PropType>> | jest.Mock<Component<PropType>>;
 
 export type MockedElement<PropType = {}> = HTMLElement & {
     props: PropType, 
@@ -10,7 +10,9 @@ export type MockedElement<PropType = {}> = HTMLElement & {
 
 export const mockElementTestId = 'rtl-mock-element';
 
-function ensureIsMock<PropType>(mockedComponent: FC<PropType>) {
+type FunctionOrClassComponent<PropType> = FC<PropType> | (new (props: PropType) => Component<PropType>);
+
+function ensureIsMock<PropType>(mockedComponent: FunctionOrClassComponent<PropType>) {
     if (!jest.isMockFunction(mockedComponent)) {
         throw new Error(`${mockedComponent.name} cannot be setup because it is not a Jest mock. Call "jest.mock('path/to/component')" first`);
     }
@@ -23,10 +25,8 @@ export interface MockComponentOptions {
     element?: keyof ReactHTML;
 }
 
-export function setupMockComponent<PropType>(mockedComponent: FC<PropType>, options?: MockComponentOptions) {
-    ensureIsMock(mockedComponent);
-    
-    const mockImplementation: FC<PropType> = (props) => {
+function createMockComponent<PropType>(mockedComponent: MockedComponent<PropType>, options?: MockComponentOptions): FC<PropType> {
+    const MockImplementation: FC<PropType> = (props) => {
         const mockedElmentRef = useRef<MockedElement<PropType> | null>(null);
         useEffect(() => {
             if (mockedElmentRef.current) {
@@ -37,7 +37,7 @@ export function setupMockComponent<PropType>(mockedComponent: FC<PropType>, opti
         const ref: RefCallback<HTMLDivElement> = (el) => {
             mockedElmentRef.current = el as unknown as MockedElement<PropType>;
             if (mockedElmentRef.current) {
-                mockedElmentRef.current.component = comp;
+                mockedElmentRef.current.component = mockedComponent; //TODO: fix me
             }
         };
 
@@ -47,7 +47,29 @@ export function setupMockComponent<PropType>(mockedComponent: FC<PropType>, opti
             'data-testid': mockElementTestId,
         }, props.children);
     };
+    return MockImplementation;
+}
 
-    const comp = mockedComponent as MockedComponent<PropType>;
-    comp.mockImplementation(mockImplementation);
+export function setupMockComponent<PropType>(mockedComponent: FunctionOrClassComponent<PropType>, options?: MockComponentOptions) {
+    ensureIsMock(mockedComponent);
+    const MockImplementation = createMockComponent(mockedComponent as MockedComponent<PropType>, options);
+    if (isClassComponent(mockedComponent)) {
+        setupClassComponent(MockImplementation, mockedComponent as jest.Mock<Component<PropType>>);
+    } else {
+        const mockFunctionComponent = mockedComponent as jest.MockedFunction<FC<PropType>>;
+        mockFunctionComponent.mockImplementation(MockImplementation);
+    }
+}
+
+function setupClassComponent<PropType>(MockImplementation: FC<PropType>, mockedComponent: jest.Mock<Component<PropType>>) {
+    class MockClassComponentWrapper extends Component<PropType> {
+        render() {
+            return <MockImplementation {...this.props} />;
+        }
+    }
+    mockedComponent.mockImplementation((props: PropType) => new MockClassComponentWrapper(props));
+}
+
+function isClassComponent<PropType>(mockedComponent: FunctionOrClassComponent<PropType>) {
+    return 'isReactComponent' in mockedComponent.prototype;
 }
