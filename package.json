@@ -48,9 +48,9 @@
     "typescript": "^4.5.4"
   },
   "peerDependencies": {
+    "@testing-library/react": "*",
     "react": "*",
-    "react-dom": "*",
-    "@testing-library/react": "*"
+    "react-dom": "*"
   },
   "jest": {
     "testEnvironment": "jest-environment-jsdom",
@@ -64,7 +64,9 @@
     ]
   },
   "release": {
-    "branches": ["master"]
+    "branches": [
+      "master"
+    ]
   },
   "bugs": {
     "url": "https://github.com/sourceallies/rtl-mock-component/issues"

@@ -12,7 +12,6 @@ const TestedComponent = ({value}: {value: string}) => (
 );
 
 beforeEach(() => {
-    // @ts-ignore
     setupMockComponent(MockedClassComponent);
 });
 
