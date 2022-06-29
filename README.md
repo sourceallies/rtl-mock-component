@@ -2,9 +2,9 @@
 
 ## The Problem
 
-[React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) is a popular testing library for react applications. It fundamentally changed how react applicatios are tested by advocating for a "deep by default" rendering strategy and asserting and interacting with a component more inline with the way a human does.
+[React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) is a popular testing library for react applications. It fundamentally changed how react applications are tested by advocating for a "deep by default" rendering strategy and asserting and interacting with a component more inline with the way a human does.
 
-While I generally agree with Kent C. Dodds that we shouldn't mock every component any more than we should mock every private function in a module, there are times in more complicated applications where rendering complicated child components is impractical and difficualt to maintain.
+While I generally agree with Kent C. Dodds that we shouldn't mock every component any more than we should mock every private function in a module, there are times in more complicated applications where rendering complicated child components is impractical and difficult to maintain.
 
 ## The Solution
 
@@ -40,7 +40,7 @@ This library compliments `@testing-library/react` to make it easy to setup and m
     ```Typescript
     expect(getByMockComponent(MyChildComponent)).toBeInTheDocument();
     ```
-6. `getMockComponent` and the other query functions return a `MockedComponentElement<T>` that extends from `HTMLElement` and adds a `props` property that can be asserted on. For example, to make sure that the compnent is currently rendered with the open prop set to true:
+6. `getMockComponent` and the other query functions return a `MockedComponentElement<T>` that extends from `HTMLElement` and adds a `props` property that can be asserted on. For example, to make sure that the component is currently rendered with the open prop set to true:
     ```Typescript
     expect(getByMockComponent(MyChildComponent).props.open).toBe(true);
     ```
