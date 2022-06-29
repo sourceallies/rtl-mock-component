@@ -12,7 +12,7 @@ This library compliments `@testing-library/react` to make it easy to setup and m
 
 ## Setup
 
-1. We assume that your project is already using [Jest] and [@testing-library/react]
+1. We assume that your project is already using [@testing-library/react](https://testing-library.com/docs/react-testing-library/intro/) and either [Jest](https://jestjs.io) or [Vitest](https://vitest.dev)
 2. Install this library
     ```bash
     npm install --save-dev @sourceallies/rtl-mock-component
@@ -29,7 +29,11 @@ This library compliments `@testing-library/react` to make it easy to setup and m
     ```Typescript
     jest.mock('./MyChildComponent');
     ```
-3. In a `beforeEach` method, call `setupMockComponent` and pass it the component you are mocking. This sets up the jest mock.
+    or
+    ```Typescript
+    vi.mock('./MyChildComponent');
+    ```
+3. In a `beforeEach` method, call `setupMockComponent` and pass it the component you are mocking. This sets up the mock.
     ```Typescript
     beforeEach(() => {
         setupMockComponent(MyChildComponent);
@@ -45,7 +49,7 @@ This library compliments `@testing-library/react` to make it easy to setup and m
     expect(getByMockComponent(MyChildComponent).props.open).toBe(true);
     ```
 
-    *Note:* this way of testing ensures that the component is **currently** rendered with the provided value. Jest's `toHaveBeenCalledWith` would only test that was ever rendered with the expected value.
+    *Note:* this way of testing ensures that the component is **currently** rendered with the provided value. `toHaveBeenCalledWith` would only test that was ever rendered with the expected value.
 
 ### Customization
 
