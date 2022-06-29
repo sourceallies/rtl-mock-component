@@ -16,7 +16,7 @@
     "src"
   ],
   "scripts": {
-    "test": "npm run jest && npm run vitest",
+    "test": "npm run jest && npm run vitest -- run",
     "jest": "jest",
     "vitest": "vitest",
     "compile": "tsc"
