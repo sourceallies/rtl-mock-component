@@ -17,7 +17,7 @@ export const mockElementTestId = 'rtl-mock-element';
 function ensureIsMock<PropType>(mockedComponent: FunctionOrClassComponent<PropType>) {
     const mockImplementation = (mockedComponent as any).mockImplementation;
     if (typeof mockImplementation !== 'function') {
-        throw new Error(`${mockedComponent.name} cannot be setup because it is not a compatable mock. Call "jest.mock('path/to/component')" first`);
+        throw new Error(`${mockedComponent.name} cannot be setup because it is not a compatable mock. Call "jest.mock('path/to/component')" or "vi.mock('path/to/component')" first`);
     }
     return mockedComponent as unknown as MockedComponent<PropType>;
 }
