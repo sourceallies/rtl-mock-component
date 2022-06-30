@@ -19,7 +19,11 @@ jobs:
       
       - run: npm ci
       
-      - run: npm test
+      - name: Jest
+        run: npm run jest
+
+      - name: Vitest
+        run: npm run vitest -- run
 
       - run: npm run compile
 
